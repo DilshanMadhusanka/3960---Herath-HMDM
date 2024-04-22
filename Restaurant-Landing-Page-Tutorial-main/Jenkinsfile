@@ -8,16 +8,30 @@ pipeline {
             }
         }
         
+        stage('Change Directory') {
+            steps {
+                dir('Restaurant-Landing-Page-Tutorial-main') {
+                    // This block will execute commands in the specified directory
+                    // Add any pre-Docker setup commands if needed
+                }
+            }
+        }
+        
         stage('Dockerize the application') {
             steps {
-                sh 'sudo docker build -t restaurant .'
+                dir('Restaurant-Landing-Page-Tutorial-main') {
+                    sh 'docker build -t restaurant .'
+                }
             }
         }
         
         stage('Containerize the application') {
             steps {
-                sh 'sudo docker run -d  -p 3000:3000 restaurant'
+                dir('Restaurant-Landing-Page-Tutorial-main') {
+                    sh 'docker run -d -p 3000:3000 restaurant'
+                }
             }
         }
     }
-}
+sa}
+sa
