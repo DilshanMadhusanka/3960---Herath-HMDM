@@ -20,7 +20,7 @@ pipeline {
         stage('Dockerize the application') {
             steps {
                 dir('Restaurant-Landing-Page-Tutorial-main') {
-                    sh 'docker build -t restaurant .'
+                    sh 'sudo docker build -t restaurant .'
                 }
             }
         }
@@ -28,10 +28,9 @@ pipeline {
         stage('Containerize the application') {
             steps {
                 dir('Restaurant-Landing-Page-Tutorial-main') {
-                    sh 'docker run -d -p 3000:3000 restaurant'
+                    sh 'sudo docker run -d -p 3000:3000 restaurant'
                 }
             }
         }
     }
-sa}
-sa
+}
